@@ -1,5 +1,27 @@
-import 'package:dart_curso_dois/dart_curso_dois.dart' as dart_curso_dois;
+void main () {
+      String nome = 'Laranja';
+      double peso = 100.2;
+      String cor = 'Verde e Amarela';
+      String sabor = 'Doce e cítrica';
+      int diasDesdeColheita = 40;
+      bool isMadura = functEstaMadura(diasDesdeColheita);
 
-void main(List<String> arguments) {
-  print('Hello world: ${dart_curso_dois.calculate()}!');
+      print(isMadura);
+      print(functEstaMadura(20));
+
+      if(diasDesdeColheita >= 30) {
+        isMadura = true;
+      } else {
+        isMadura = false;
+      }
+
+
+}
+
+bool functEstaMadura(dias){
+      if(dias >= 30){
+            return true;
+      } else {
+            return false;
+      }
 }
