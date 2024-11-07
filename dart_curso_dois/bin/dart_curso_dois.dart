@@ -5,7 +5,10 @@ void main () {
       String sabor = 'Doce e cítrica';
       int diasDesdeColheita = 40;
       bool isMadura = functEstaMadura(diasDesdeColheita);
-      mostraMadura('Uva', 40, cor: 'roxa');
+
+      // mostraMadura('Uva', 40, cor: 'roxa');
+      Frutas fruta01 = Frutas('Uva', 10.2, 'roxa', 'doce', 10);
+      print(fruta01);
 }
 /// Posicionais Obrigatórios
 // São a ordem certa dos aguamentos, não posso colocar, a Uva, depois do 40, pois ela foi declarada no parâmetro primeiro o nome.
@@ -39,4 +42,15 @@ bool functEstaMadura(int dias){
       } else {
             return false;
       }
+}
+
+class Frutas {
+      String nome;
+      double peso;
+      String cor;
+      String sabor;
+      int diasDesdeColheita;
+      bool? isMadura;
+
+      Frutas(this.nome, this.peso, this.cor, this.sabor, this.diasDesdeColheita);
 }
