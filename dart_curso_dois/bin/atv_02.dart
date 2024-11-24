@@ -54,4 +54,20 @@ void main() {
   // Qual o tipo de objeto que a variável 'maca' referencia?
   // Qual o tipo de objeto que a variável 'laranja' referencia?
   // Qual o método 'mostrarNome' que é chamado para cada objeto?
+  Carros carro01 = Carros('Toyota', 'Hillux', 'Preta', 2010);
+  print(carro01);
+}
+
+class Carros {
+  String marca;
+  String modelo;
+  String cor;
+  int ano;
+
+  Carros(this.marca, this.modelo, this.cor, this.ano);
+
+  @override
+  String toString() {
+    return 'A marca do carro é $marca, do modelo $modelo, da cor preta, do ano de $ano';
+  }
 }
