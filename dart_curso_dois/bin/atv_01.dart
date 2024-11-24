@@ -1,7 +1,7 @@
 main(){
 
   Frutas fruta01 = Frutas('Uva', 100.2, 'Roxa', 20, isMadura: true);
-  print(fruta01.);
+  print(fruta01.nome);
 }
 
 
