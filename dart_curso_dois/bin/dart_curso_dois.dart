@@ -9,6 +9,7 @@ void main () {
       // mostraMadura('Uva', 40, cor: 'roxa');
       Frutas fruta01 = Frutas('Uva', 10.2, 'roxa', 'doce', 10);
       print(fruta01);
+
 }
 /// Posicionais Obrigatórios
 // São a ordem certa dos aguamentos, não posso colocar, a Uva, depois do 40, pois ela foi declarada no parâmetro primeiro o nome.
@@ -29,7 +30,6 @@ void mostraMadura(String nome, int dias, {String? cor}) {
       else {
             print('A $nome não está madura');
       }
-
       if(cor != null){
             print('A $nome é $cor');
       }
@@ -43,6 +43,8 @@ bool functEstaMadura(int dias){
             return false;
       }
 }
+
+
 
 class Frutas {
       String nome;
