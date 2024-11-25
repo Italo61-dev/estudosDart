@@ -19,6 +19,7 @@ void main() {
   banana1.printAlimento();
   macadamia1.printAlimento();
   limao1.printAlimento();
+  macadamia1.fazerMassa();
 }
 
 /// Posicionais Obrigatórios
@@ -64,7 +65,7 @@ class Alimentos {
   }
 }
 
-class Frutas extends Alimentos {
+class Frutas extends Alimentos implements Bolo{
   String sabor;
   int diasDesdeDeColheita;
   bool? isMadura;
@@ -84,6 +85,23 @@ class Frutas extends Alimentos {
   void fazerSuco() {
     print('Você está fazendo suco de $nome');
   }
+
+  @override
+  void separarIngredientes() {
+    print('Catar a fruta');
+  }
+
+  @override
+  void fazerMassa() {
+    print('Misturar a $nome com a massa.');
+  }
+  
+  @override
+  void assar() {
+    print('Assar o bolo.');
+  }
+
+
 }
 
 class Legumes extends Alimentos implements Bolo{
@@ -136,6 +154,12 @@ class Nozes extends Frutas {
   Nozes(String nome, double peso, String cor, String sabor,
       int diasDesdeDeColheita, this.porcetagemDeOleoNatural)
       : super(nome, peso, cor, sabor, diasDesdeDeColheita);
+
+  @override
+  void fazerMassa() {
+    print('Tirar a casca da $nome');
+    super.fazerMassa();
+  }
 }
 
 abstract class Bolo {
