@@ -3,13 +3,22 @@ void main() {
   double peso = 100.2;
   String cor = 'Verde e Amarela';
   String sabor = 'Doce e cítrica';
-  int diasDesdeColheita = 40;
-  bool isMadura = functEstaMadura(diasDesdeColheita);
+  int diasDesdeDeColheita = 40;
+  bool isMadura = functEstaMadura(diasDesdeDeColheita);
 
   // mostraMadura('Uva', 40, cor: 'roxa');
-  Frutas fruta01 = Frutas('Uva', 10.2, 'roxa', 'doce', 10);
-  print(fruta01.cor);
-  fruta01.estaMadura(30);
+  // Frutas fruta01 = Frutas('Uva', 10.2, 'roxa', 'doce', 10);
+  // print(fruta01.cor);
+  // fruta01.estaMadura(30);
+  Legumes mandioca = Legumes('Macaxeira', 1200, 'Marron', true);
+  Frutas banana1 = Frutas('Banana', 75, 'Amarela', 'Doce', 12);
+  Nozes macadamia1 = Nozes('Macadamina', 2, 'Branco Amarelado', 'doce', 20, 35);
+  Citricas limao1 = Citricas('Limão', 50, 'verde', 'azedo', 5, 9);
+
+  mandioca.printAlimento();
+  banana1.printAlimento();
+  macadamia1.printAlimento();
+  limao1.printAlimento();
 }
 
 /// Posicionais Obrigatórios
@@ -51,30 +60,30 @@ class Alimentos {
   Alimentos(this.nome, this.peso, this.cor);
 
   void printAlimento() {
-    print('Este(a) $nome pesa $peso e é $cor');
+    print('Este(a) é $nome e pesa $peso e é $cor');
   }
 }
 
 class Frutas extends Alimentos {
   String sabor;
-  int diasDesdeColheita;
+  int diasDesdeDeColheita;
   bool? isMadura;
 
-  Frutas(
-      String nome, double peso, String cor, this.sabor, this.diasDesdeColheita,
+  Frutas(String nome, double peso, String cor, this.sabor,
+      this.diasDesdeDeColheita,
       {this.isMadura})
       : super(nome, peso, cor);
 
   void estaMadura(int diasParaMadura) {
-    isMadura = diasDesdeColheita >= diasParaMadura;
+    isMadura = diasDesdeDeColheita >= diasParaMadura;
     String statusIsMadura = isMadura! ? 'Sim' : 'Não';
     print(
-        'A sua $nome foi colhida a $diasDesdeColheita dias e precisa de $diasParaMadura dias para poder comer! Ela está madura? $statusIsMadura');
-  }
-  void fazerSuco(){
-    print('Você está fazendo suco de $nome') ;
+        'A sua $nome foi colhida a $diasDesdeDeColheita dias e precisa de $diasParaMadura dias para poder comer! Ela está madura? $statusIsMadura');
   }
 
+  void fazerSuco() {
+    print('Você está fazendo suco de $nome');
+  }
 }
 
 class Legumes extends Alimentos {
@@ -90,26 +99,26 @@ class Legumes extends Alimentos {
   }
 }
 
-class Citricas {
-  String nome;
-  double peso;
-  String cor;
-  int diasDesdeDeColheita;
-  bool? isMadura;
+class Citricas extends Frutas {
   double nivelAzedo;
 
-  Citricas(this.nome, this.peso, this.cor, this.diasDesdeDeColheita,
-      this.isMadura, this.nivelAzedo);
+  Citricas(String nome, double peso, String cor, String sabor,
+      int diasDesdeDeColheita, this.nivelAzedo)
+      : super(nome, peso, cor, sabor, diasDesdeDeColheita);
+
+  void existerefri(bool existe) {
+    if (existe) {
+      print('Existe refri do sabor de $nome');
+    } else {
+      print('Não existe Refri desse sabor');
+    }
+  }
 }
 
-class Nozes {
-  String nome;
-  double peso;
-  String cor;
-  int diasDesdeDeColheita;
-  bool? isMadura;
+class Nozes extends Frutas {
   double porcetagemDeOleoNatural;
 
-  Nozes(this.nome, this.peso, this.cor, this.diasDesdeDeColheita, this.isMadura,
-      this.porcetagemDeOleoNatural);
+  Nozes(String nome, double peso, String cor, String sabor,
+      int diasDesdeDeColheita, this.porcetagemDeOleoNatural)
+      : super(nome, peso, cor, sabor, diasDesdeDeColheita);
 }
