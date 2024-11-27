@@ -2,11 +2,11 @@ void main(){
   escolherMeioTransporte(Transporte.carro);
   escolherMeioTransporte(Transporte.onibus);
   escolherMeioTransporte(Transporte.skate);
+  Set <String> resgistroVisitados = <String>{};
 }
 
 
-Set<String> registrarDestinos(String destino){
-  Set <String> resgistroVisitados = <String>{};
+Set<String> registrarDestinos(String destino, Set<String> registroVisitados){
   resgistroVisitados.add(destino);
   return resgistroVisitados;
 
