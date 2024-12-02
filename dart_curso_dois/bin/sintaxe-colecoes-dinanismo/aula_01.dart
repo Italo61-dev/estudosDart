@@ -2,14 +2,7 @@ void main(){
   escolherMeioTransporte(Transporte.carro);
   escolherMeioTransporte(Transporte.onibus);
   escolherMeioTransporte(Transporte.skate);
-  Set <String> resgistroVisitados = <String>{};
-}
-
-
-Set<String> registrarDestinos(String destino, Set<String> registroVisitados){
-  resgistroVisitados.add(destino);
-  return resgistroVisitados;
-
+  escolherTipoDeConta(TipoDeContas.black);
 }
 
 void escolherMeioTransporte(Transporte locomocao){
@@ -37,3 +30,25 @@ enum Transporte {
   skate
 }
 
+void escolherTipoDeConta(TipoDeContas conta){
+  switch (conta){
+    case TipoDeContas.poupanca:
+      print('Sua conta e do tipo POUPANÇA');
+      break;
+    case TipoDeContas.salario:
+      print('Sua conta e do tipo SÁLARIO');
+    case TipoDeContas.investimento:
+      print('Sua conta e do tipo INVESTIMENTO');
+    case TipoDeContas.black:
+      print('Sua conta e do tipo BLACK');
+    default:
+      print('Conta inválida!');
+  }
+}
+
+enum TipoDeContas {
+  poupanca,
+  salario,
+  investimento,
+  black
+}
