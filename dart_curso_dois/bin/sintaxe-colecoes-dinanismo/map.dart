@@ -8,18 +8,11 @@ void main(){
 //
 // //   ----------------------------------
 //
-//   Map<String, dynamic> registrarPreco = {};
-//   registrarPreco["São Paulo"] = 200;
-//   registrarPreco["Rio de Janeiro"] = 4000;
 //
-//   print(registrarPreco);
-
-
   Pessoa pessoaDandara = Pessoa("Dandara", 25, true);
   Map<String, dynamic> mapDandara = pessoaDandara.toMap();
 
   print(mapDandara);
-
 }
 
 class Pessoa{
