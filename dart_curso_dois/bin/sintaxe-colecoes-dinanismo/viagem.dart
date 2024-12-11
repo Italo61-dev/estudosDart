@@ -52,6 +52,5 @@ class Viagem{
     } else{
       print('Não é possível!');
     }
-
   }
 }
