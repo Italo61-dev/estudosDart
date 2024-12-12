@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'controllers/bank_controller.dart';
 import 'models/account.dart';
 
@@ -24,22 +26,37 @@ import 'models/account.dart';
 //   print(result);
 // }
 
-void main(){
+void main() {
   print('Started main');
   functionOne();
   print('Finished main');
 }
 
-functionOne(){
+functionOne() {
   print('Started F01');
-  functionTwo();
+  try {
+    functionTwo();
+  } on FormatException catch (e) {
+    print('Foi capturada dentro da FunctioOne');
+    print(e.message);
+    print(e.source);
+    print(e.toString());
+  } on HttpException catch (e) {
+    print(e.toString());
+  } on IOException catch (e) {
+    e.toString();
+  } on Exception catch (e) {
+    e.toString();
+  }
+
   print('Finshed F01');
 }
 
-functionTwo(){
+functionTwo() {
   print('Started F02');
-  for(int i = 1; i <= 5; i++){
+  for (int i = 1; i <= 5; i++) {
     print(i);
+    double amount = double.parse('not a number');
   }
   print('Finshed F02');
 }
