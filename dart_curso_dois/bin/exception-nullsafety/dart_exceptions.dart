@@ -36,17 +36,12 @@ functionOne() {
   print('Started F01');
   try {
     functionTwo();
-  } on FormatException catch (e) {
-    print('Foi capturada dentro da FunctioOne');
-    print(e.message);
-    print(e.source);
-    print(e.toString());
-  } on HttpException catch (e) {
-    print(e.toString());
-  } on IOException catch (e) {
-    e.toString();
-  } on Exception catch (e) {
-    e.toString();
+  } catch (exception, stacktrace){
+    print(exception);
+    print(stacktrace);
+    rethrow;
+  } finally {
+    print('Chegou ao finally');
   }
 
   print('Finshed F01');
@@ -56,7 +51,7 @@ functionTwo() {
   print('Started F02');
   for (int i = 1; i <= 5; i++) {
     print(i);
-    double amount = double.parse('not a number');
+    double amount = double.parse('n');
   }
   print('Finshed F02');
 }
