@@ -12,7 +12,7 @@ void main() {
   bankController.addAccount(
       id: "Ricarth",
       account:
-          Account(name: "Ricarth Lima", balance: 400, isAuthenticated: true));
+          Account(name: "Ricarth Lima", balance: 400, isAuthenticated: false));
 
   bankController.addAccount(
       id: "Kako",
@@ -37,6 +37,8 @@ void main() {
   } on SenderNotAuthenticatedException catch (e) {
     print(e);
     print('O usuário de Id "${e.idSender}" não está autenticado!');
+  } on ReceiverNotAuthenticatedException catch(e){
+    print('O usuário de Id "${e.idReceiver}" não está autenticado!(remetente!)');
   } on SenderBalanceLowerThanAmountException catch (e) {
     print(e);
     print(
