@@ -24,6 +24,10 @@ class BankController {
     Account accountSender = _database[idSender]!;
     Account accountReceiver = _database[idReceiver]!;
 
+    if(!accountReceiver.isAuthenticated){
+      throw ReceiverNotAuthenticatedException(idReceiver: idReceiver);
+    }
+
     // Verificar se o remetente está autenticado
     if (!accountSender.isAuthenticated) {
       throw SenderNotAuthenticatedException(idSender: idSender);
