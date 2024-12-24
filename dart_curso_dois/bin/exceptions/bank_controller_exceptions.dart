@@ -44,3 +44,8 @@ class SenderBalanceLowerThanAmountException implements Exception{
     return '$report\nId Sender: $idSender\nSender Balance: $senderBalance\nAmount: $amount';
   }
 }
+
+class ReceiverNotAuthenticatedException implements Exception{
+  String idReceiver;
+  ReceiverNotAuthenticatedException({required this.idReceiver});
+}
