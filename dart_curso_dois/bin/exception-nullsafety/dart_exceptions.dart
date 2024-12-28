@@ -1,10 +1,47 @@
 import 'dart:io';
+import 'dart:math';
 
 import 'controllers/bank_controller.dart';
 import 'models/account.dart';
 import '../exceptions/bank_controller_exceptions.dart';
 
+void testingNullSafety(){
+  Account? myAccount;
+  Account myAccount2 = Account(name: "Italo", balance: 3000, isAuthenticated: true);
+
+  // Simulando uma comunicação externa
+  Random rng = Random();
+  int randomNumber = rng.nextInt(10);
+  if(randomNumber <= 5){
+    myAccount = Account(name: "Ricarth", balance: 200, isAuthenticated: true);
+  }
+
+  //-- Para saber o tipo do myAccount
+  // print(myAccount.runtimeType);
+
+  //-- Conversão direta: Má prática
+  // print(myAccount!.balance);
+
+  //-- tratamento de null safety
+  if (myAccount != null){
+    print("O valor do seu saldo é ${myAccount.balance}");
+  } else {
+    print("Conta Nula!!!");
+  }
+
+  //-- modo operador ternário
+  // print(myAccount != null ? "O valor do seu saldo é ${myAccount.balance}" : "Conta nula");
+
+  // Safe call
+  // print(myAccount?.balance);
+  if(myAccount2.createAt != null){
+    print(myAccount2.createAt!.day);
+  }
+}
+
 void main() {
+  testingNullSafety();
+
   // Criando o banco
   BankController bankController = BankController();
 
@@ -12,7 +49,7 @@ void main() {
   bankController.addAccount(
       id: "Ricarth",
       account:
-          Account(name: "Ricarth Lima", balance: 400, isAuthenticated: false));
+          Account(name: "Ricarth Lima", balance: 400, isAuthenticated: true));
 
   bankController.addAccount(
       id: "Kako",
@@ -22,12 +59,12 @@ void main() {
   // Fazendo transferência
   try {
     bool result = bankController.makeTransfer(
-        idSender: "Kako", idReceiver: "Ricarth", amount: 75550);
+        idSender: "Kako", idReceiver: "Ricarth", amount: 50);
 
     // Observando resultado
-    if (result) {
-      print('Transação concluída com sucesso!');
-    }
+    // if (result) {
+    //   print('Transação concluída com sucesso!');
+    // }
   } on SenderIdInvalidException catch (e) {
     print(e);
     print('O Id "${e.idSender}" do rementente não é um Id válido!');
