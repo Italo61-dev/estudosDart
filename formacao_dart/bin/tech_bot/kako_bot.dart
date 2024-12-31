@@ -11,6 +11,7 @@ void main() async {
   print('-- Iniciando o TechBOT, aguarde..--');
 
   print('TechBOT:\n Oi :) \n Como posso ajudar?');
+
   do {
     usuario = stdin.readLineSync().toString();
     print('-- Processando pergunta, aguarde..--');
