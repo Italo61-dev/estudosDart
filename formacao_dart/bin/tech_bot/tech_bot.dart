@@ -10,9 +10,9 @@ void main() async {
 
   var myStream = BotClock().techBotStream(1,10);
   var subscriber = myStream.listen((event) {
-    print('                                        TECHBOT is activaed for $event seconds ');
+    print('                                        TECHBOT está ativa a: $event segundos');
   },onDone: () {
-    print('TECHBOT is finishing its work, ask the last question');
+    print('TECHBOT está sendo finalizado, faça a ultima pergunta');
     a = false;
   });
 
