@@ -8,6 +8,14 @@ void main() async {
   var a = true;
   String usuario = '';
 
+  var myStream = BotClock().techBotStream(1,10);
+  var subscriber = myStream.listen((event) {
+    print('                                        TECHBOT is activaed for $event seconds ');
+  },onDone: () {
+    print('TECHBOT is finishing its work, ask the last question');
+    a = false;
+  });
+
   print('-- Iniciando o TechBOT, aguarde..--');
 
   await BotClock().clock(2);
