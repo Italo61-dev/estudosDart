@@ -12,9 +12,9 @@ void main() async{
     print('The Stream is finished');
   }
 
-  print('Main is finished');
+  var kakoStream = myStream(1).asBroadcastStream();
 
-  StreamSubscription mySubscriber = myStream(1).listen((event) {
+  StreamSubscription mySubscriber = kakoStream.listen((event) {
     if (event.isEven) {
       print('This number is even!\n');
     }
@@ -23,13 +23,21 @@ void main() async{
   }, onDone: (){
     print('The subscriber is gone.');
   });
+
+  kakoStream.map((event) => 'Subscriber 2 watching').listen(print);
+
   await Future.delayed(Duration(seconds: 3));
   mySubscriber.pause();
   print('Stream paused');
+
   await Future.delayed(Duration(seconds: 3));
   mySubscriber.resume();
   print('Stream resumed');
+
   await Future.delayed(Duration(seconds: 3));
   mySubscriber.cancel();
   print('Stream canceled');
+
+
+  print('Main is finished');
 }
