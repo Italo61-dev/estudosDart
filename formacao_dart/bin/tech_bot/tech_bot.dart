@@ -2,6 +2,7 @@
 import 'dart:io';
 import 'questions/time_questions.dart';
 import 'timing/waiting_time.dart';
+import 'questions/good_manners.dart';
 
 void main() async {
   String techbot = 'TechBOT:\n';
@@ -10,7 +11,7 @@ void main() async {
 
   var myStream = BotClock().techBotStream(1,10);
   var subscriber = myStream.listen((event) {
-    print('                                        TECHBOT está ativa a: $event segundos');
+    print('                                        TECHBOT está ativo a: $event segundos');
   },onDone: () {
     print('TECHBOT está sendo finalizado, faça a ultima pergunta');
     a = false;
@@ -35,12 +36,15 @@ void main() async {
       print(techbot + ' Até a proxima!!');
     } else if (TimeQuestions(usuario).isThisTime()) {
       // verificar antes, assim não fazemos toda a função sem precisar.
-      await BotClock().clock(2);
       TimeQuestions(usuario).timeQuestion();
+      await BotClock().clock(1);
 
+    } else if (GoodManners(usuario).isThisManners()) {
+      GoodManners(usuario).goodManners();
+      await BotClock().clock(1);
     } else if (false) {
       //Basta adicionar novas perguntas aqui!
-    } else {
+    }else {
       await BotClock().clock(2);
       print(techbot +
           ' Não fui treinado para responder a essa pergunta \n Desculpe :( ');
