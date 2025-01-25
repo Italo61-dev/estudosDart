@@ -17,10 +17,12 @@ class GoodManners{
         question.contains('Obrigada') ||
         question.contains('obgd') ||
         question.contains('Obgd') ||
-        question.contains('bom') ||
-        question.contains('boa') ||
-        question.contains('tarde') ||
-        question.contains('noite') ||
+        question.contains('bom dia') ||
+        question.contains('Bom dia') ||
+        question.contains('boa tarde') ||
+        question.contains('Boa tarde') ||
+        question.contains('boa noite') ||
+        question.contains('Boa noite') ||
         question.contains('de nada') ||
         question.contains('De nada')) {
       isThisGoodManners = true;
